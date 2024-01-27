@@ -2,7 +2,7 @@ import { useState } from "react"
 import Editor from "./components/Editor"
 import Preview from "./components/Preview"
 import { FormStateProvider } from "./hooks/stateContext";
-
+import { BACKGROUNDS } from './constants';
 export interface ISlide {
   title: string;
   text?: string;
@@ -14,7 +14,7 @@ export interface IColor {
   accent: string;
 }
 
-export type Backgrounds = 'dots' | 'circle' | 'triangle' | 'blobs';
+export type Backgrounds = typeof BACKGROUNDS[number];
 
 export interface State {
   selectedIdx: number;
