@@ -1,9 +1,12 @@
+import { v4 } from 'uuid';
 import { useState } from "react"
 import Editor from "./components/Editor"
 import Preview from "./components/Preview"
 import { FormStateProvider } from "./hooks/stateContext";
-import { BACKGROUNDS, HEADSHOT } from './constants';
+import { BACKGROUNDS } from './constants';
+
 export interface ISlide {
+  uid: string;
   title: string;
   text?: string;
 }
@@ -48,6 +51,32 @@ function App() {
     },
     slides: [
       {
+        uid: v4(),
+        title: 'GROW YOUR LINKEDIN',
+        text: 'Cover slide Subtitle'
+      },
+      {
+        uid: v4(),
+        title: 'GROW YOUR LINKEDIN',
+        text: 'Cover slide Subtitle'
+      },
+      {
+        uid: v4(),
+        title: 'GROW YOUR LINKEDIN',
+        text: 'Cover slide Subtitle'
+      },
+      {
+        uid: v4(),
+        title: 'GROW YOUR LINKEDIN',
+        text: 'Cover slide Subtitle'
+      },
+      {
+        uid: v4(),
+        title: 'GROW YOUR LINKEDIN',
+        text: 'Cover slide Subtitle'
+      },
+      {
+        uid: v4(),
         title: 'GROW YOUR LINKEDIN',
         text: 'Cover slide Subtitle'
       }

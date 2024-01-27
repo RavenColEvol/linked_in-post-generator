@@ -40,22 +40,23 @@ main {
   background-repeat: no-repeat;
   background-position: center;
   aspect-ratio: 4 / 5;
-  box-shadow: 0 .2rem .4rem rgba(0, 0, 0, .18);
-  border-radius: .5rem;
-  padding: 2rem;
+  box-shadow: 0 .2em .4em rgba(0, 0, 0, .18);
+  border-radius: .5em;
+  padding: 2em;
   display: flex;
   flex-direction: column;
 }
 
 .renderer-card .main h1 {
   color: var(--primary, #000);
-  font-size: 2rem;
+  font-size: 2em;
   line-height: 1.2;
   font-weight: bold;
 }
 
 .renderer-card .main .text {
   color: var(--secondary, #000);
+  font-weight: bold;
 }
 
 .color-bar__label {
@@ -143,4 +144,39 @@ main {
   display: block;
   color: var(--secondary);
   letter-spacing: .04rem;
+}
+
+.preview-container {
+  display: flex;
+  gap: 1rem;
+  overflow: auto;
+}
+
+.preview-container .renderer-card {
+  cursor: pointer;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.preview-container .add-slide-container {
+  width: 6rem;
+  border: .2rem dashed rgba(0, 0, 0, .2);
+  color: rgba(0, 0, 0, .2);
+  border-radius: .5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.preview-container .delete_wrapper {
+  position: relative;
+}
+
+.preview-container .delete_wrapper button {
+  position: absolute;
+  top: .2rem;
+  right: .2rem;
 }

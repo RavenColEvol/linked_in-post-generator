@@ -11,7 +11,7 @@ function Renderer(props: RendererProps) {
   const { selectedIdx, slides, user, theme } = state;
   return (
     <div {...props}>
-      <Card 
+      <CardRenderer 
         slide={slides[selectedIdx]}
         user={user}
         theme={theme}
@@ -21,12 +21,13 @@ function Renderer(props: RendererProps) {
 }
 
 interface CardRendererProps extends Pick<State, 'theme' | 'user'> {
-  slide: ISlide
+  slide: ISlide;
+  style?: React.CSSProperties;
 }
 
 
-function Card(props: CardRendererProps) {
-  const { slide, user, theme} = props;
+export function CardRenderer(props: CardRendererProps) {
+  const { slide, user, theme, style = {} } = props;
   const { title, text } = slide;
 
   const { background, colors } = theme;
@@ -38,7 +39,8 @@ function Card(props: CardRendererProps) {
     backgroundImage: `${getBg(background, colors)}`,
     '--primary': primary,
     '--secondary': secondary,
-    '--accent': accent
+    '--accent': accent,
+    ...style
   } as React.CSSProperties;
   return (
     <div 
