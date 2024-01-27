@@ -50,9 +50,9 @@ function Card(props: CardRendererProps) {
         <p className="text">{text}</p>
       </div>
       <div className="user">
-        {headshot && <>{headshot}</>}
-        {name && <>{name}</>}
-        {handle && <>@{handle}</>}
+        {headshot && <span className='headshot'>{headshot}</span>}
+        {name && <span className="name">{name}</span>}
+        {handle && <span className="handle">@{handle}</span>}
       </div>
     </div>
   )

@@ -1,13 +1,13 @@
 body {
   background: #f0f5ff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 main {
   width: 56rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .editor {
@@ -24,6 +24,7 @@ main {
 }
 
 .renderer-card {
+  background-color: var(--accent);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -105,4 +106,20 @@ main {
   padding: 16px;
   background: white;
   height: 100%;
+}
+
+.user {
+  font-weight: bold;
+}
+
+.user .name {
+  display: block;
+  color: var(--primary);
+  letter-spacing: .08rem;
+}
+
+.user .handle {
+  display: block;
+  color: var(--secondary);
+  letter-spacing: .04rem;
 }
