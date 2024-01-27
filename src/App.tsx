@@ -2,7 +2,7 @@ import { useState } from "react"
 import Editor from "./components/Editor"
 import Preview from "./components/Preview"
 import { FormStateProvider } from "./hooks/stateContext";
-import { BACKGROUNDS } from './constants';
+import { BACKGROUNDS, HEADSHOT } from './constants';
 export interface ISlide {
   title: string;
   text?: string;

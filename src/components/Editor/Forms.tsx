@@ -1,9 +1,10 @@
 import { UploadOutlined } from "@ant-design/icons";
-import { Button, Form, Input, Select, Upload } from "antd";
+import { Button, Form, GetProp, Input, Select, Upload } from "antd";
 import { useState } from "react";
 import { IColor } from "../../App";
 import { useFormState } from "../../hooks/stateContext";
 import { BACKGROUNDS, THEMES } from "../../constants";
+import { UploadChangeParam, UploadProps } from "antd/es/upload";
 
 function ContentForm() {
   const [form, setFormState] = useFormState()!;
@@ -42,19 +43,62 @@ function ContentForm() {
   );
 }
 
+type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
+const getBase64 = (img: FileType, callback: (url: string) => void) => {
+  const reader = new FileReader();
+  reader.addEventListener('load', () => callback(reader.result as string));
+  reader.readAsDataURL(img);
+};
+
 function SettingsForm() {
+  const [form, setFormState] = useFormState()!;
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFormState(form => ({
+      ...form,
+      user: {
+        ...form.user,
+        [event.target.id]: event.target.value
+      }
+    }))
+  }
+
+  const handleFileChange  = (event: UploadChangeParam) => {
+    const { file } = event;
+    getBase64(file as FileType, (url) => {
+      setFormState(form => ({
+        ...form,
+        user: {
+          ...form.user,
+          headshot: url
+        }
+      }))
+    });
+  }
+
+  const handleRemove = () => {
+    setFormState(form => ({
+      ...form,
+      user: {
+        ...form.user,
+        headshot: ''
+      }
+    }))
+  }
+
+  const { handle, name } = form.user;
   return (
     <>
       <Form.Item label="Headshot" name="headshot">
-        <Upload>
+        <Upload onRemove={handleRemove} listType="picture" maxCount={1} beforeUpload={() => false} accept="image/*" onChange={handleFileChange}>
           <Button icon={<UploadOutlined />}>Click to Upload</Button>
         </Upload>
       </Form.Item>
       <Form.Item label="Name" name="name">
-        <Input placeholder="Your Name" />
+        <Input onChange={handleChange} defaultValue={name} placeholder="Your Name" />
       </Form.Item>
       <Form.Item label="Handle" name="handle">
-        <Input placeholder="Your LinkedIn Handle" />
+        <Input onChange={handleChange} addonBefore='@' defaultValue={handle} placeholder="Your LinkedIn Handle" />
       </Form.Item>
     </>
   );

@@ -40,7 +40,6 @@ function Card(props: CardRendererProps) {
     '--secondary': secondary,
     '--accent': accent
   } as React.CSSProperties;
-
   return (
     <div 
     className="renderer-card"
@@ -50,9 +49,11 @@ function Card(props: CardRendererProps) {
         <p className="text">{text}</p>
       </div>
       <div className="user">
-        {headshot && <span className='headshot'>{headshot}</span>}
-        {name && <span className="name">{name}</span>}
-        {handle && <span className="handle">@{handle}</span>}
+        {headshot && <img src={headshot} className='headshot'/>}
+        <div>
+          {name && <span className="name">{name}</span>}
+          {handle && <span className="handle">@{handle}</span>}
+        </div>
       </div>
     </div>
   )
