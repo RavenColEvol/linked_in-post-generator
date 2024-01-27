@@ -95,3 +95,14 @@ main {
     width: 100%;
   }
 }
+
+
+.editor .ant-tabs-nav {
+  margin: 0;
+}
+
+.editor .ant-tabs-content-holder {
+  padding: 16px;
+  background: white;
+  height: 100%;
+}

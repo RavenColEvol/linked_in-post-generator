@@ -39,6 +39,7 @@ function Editor() {
         >
           <Tabs 
             type='card'
+            className='editor-tabs'
             items={tabs.map(({ Label, Component }, index) => ({
               label: <Label />,
               key: String(index),

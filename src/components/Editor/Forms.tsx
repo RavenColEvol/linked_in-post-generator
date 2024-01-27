@@ -2,15 +2,40 @@ import { UploadOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Select, Upload } from "antd";
 import { useState } from "react";
 import { IColor } from "../../App";
+import { useFormState } from "../../hooks/stateContext";
 
 function ContentForm() {
+  const [form, setFormState] = useFormState()!;
+  const { slides, selectedIdx } = form;
+  const { title, text } = slides[selectedIdx];
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const targetName = e.target.id;
+    setFormState((form) => {
+      const newState = { ...form };
+      //@ts-ignore
+      newState.slides[selectedIdx][targetName] = e.target.value as string;
+      return newState;
+    });
+  };
+
   return (
     <>
       <Form.Item label="Title" name="title">
-        <Input placeholder="Your Title" />
+        <Input
+          onChange={handleChange}
+          defaultValue={title}
+          type="text"
+          placeholder="Your Title"
+        />
       </Form.Item>
-      <Form.Item label="Content" name="content">
-        <Input placeholder="Your content goes here" />
+      <Form.Item label="Content" name="text">
+        <Input
+          onChange={handleChange}
+          defaultValue={text}
+          type="text"
+          placeholder="Your content goes here"
+        />
       </Form.Item>
     </>
   );
@@ -34,13 +59,13 @@ function SettingsForm() {
   );
 }
 
-function ColorBar({ color, idx }: { color: IColor, idx: number }) {
+function ColorBar({ color, idx }: { color: IColor; idx: number }) {
   const { primary, secondary, accent } = color;
   const value = [primary, secondary, accent, idx].join(":");
   const variables = {
-    '--primary': primary,
-    '--secondary': secondary,
-    '--accent': accent
+    "--primary": primary,
+    "--secondary": secondary,
+    "--accent": accent,
   } as React.CSSProperties;
   return (
     <>
@@ -50,12 +75,11 @@ function ColorBar({ color, idx }: { color: IColor, idx: number }) {
         name="colors"
         type="radio"
       />
-      <label 
+      <label
         style={variables}
-        className="color-bar__label" 
+        className="color-bar__label"
         htmlFor={value}
-      >
-      </label>
+      ></label>
     </>
   );
 }
