@@ -2,12 +2,12 @@ import { v4 } from "uuid";
 import { useFormState } from "../../hooks/stateContext";
 import { CardRenderer } from "../Renderer";
 import { DeleteOutlined } from "@ant-design/icons";
-import { Button } from "antd";
+import { Button, Form } from "antd";
 import clsx from "clsx";
 
 function Preview() {
   const [form, setFormState] = useFormState()!;
-
+  
   const handleDelete = (event: React.MouseEvent<HTMLElement>, uid: string) => {
     event.stopPropagation();
     event.preventDefault();
@@ -24,10 +24,12 @@ function Preview() {
   };
 
   const changePreview = (index: number) => {
-    setFormState((form) => ({
-      ...form,
-      selectedIdx: index
-    }));
+    setFormState((form) => {
+      return {
+        ...form,
+        selectedIdx: index
+      }
+    });
   }
 
   return (

@@ -1,16 +1,14 @@
 import { AllHTMLAttributes } from "react";
 import { ISlide, State } from "../App";
 import { getBg } from "./backgrounds";
+import { useFormState } from "../hooks/stateContext";
 
-interface RendererProps extends AllHTMLAttributes<HTMLDivElement> {
-  state: State
-}
 
-function Renderer(props: RendererProps) {
-  const { state } = props;
+function Renderer() {
+  const [state] = useFormState()!;
   const { selectedIdx, slides, user, theme } = state;
   return (
-    <div {...props}>
+    <div>
       <CardRenderer 
         slide={slides[selectedIdx]}
         user={user}
@@ -28,7 +26,7 @@ interface CardRendererProps extends Pick<State, 'theme' | 'user'> {
 
 export function CardRenderer(props: CardRendererProps) {
   const { slide, user, theme, style = {} } = props;
-  const { title, text } = slide;
+  const { title, text } = slide || {};
 
   const { background, colors } = theme;
   const { primary, secondary, accent } = colors;

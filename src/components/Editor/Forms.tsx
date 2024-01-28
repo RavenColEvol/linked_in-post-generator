@@ -9,9 +9,8 @@ import { UploadChangeParam, UploadProps } from "antd/es/upload";
 function ContentForm() {
   const [form, setFormState] = useFormState()!;
   const { slides, selectedIdx } = form;
-  const { title, text } = slides[selectedIdx];
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const targetName = e.target.id;
     setFormState((form) => {
       const newState = { ...form };
@@ -26,17 +25,16 @@ function ContentForm() {
       <Form.Item label="Title" name="title">
         <Input
           onChange={handleChange}
-          defaultValue={title}
           type="text"
           placeholder="Your Title"
+          allowClear
         />
       </Form.Item>
       <Form.Item label="Content" name="text">
-        <Input
+        <Input.TextArea
           onChange={handleChange}
-          defaultValue={text}
-          type="text"
           placeholder="Your content goes here"
+          allowClear
         />
       </Form.Item>
     </>
