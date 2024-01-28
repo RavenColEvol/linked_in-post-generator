@@ -151,9 +151,10 @@ main {
 
 .preview-container {
   display: flex;
-  gap: 1rem;
   overflow: auto;
   padding: 1rem;
+  font-size: 4px;
+  position: relative;
 }
 
 .preview-container .renderer-card {
@@ -173,18 +174,34 @@ main {
   align-items: center;
   font-size: 2rem;
   flex-shrink: 0;
+  margin-left: .5rem;
 }
 
 .preview-container .preview_card__wrapper {
   position: relative;
+  padding: 0 .5rem;
 }
 
 .preview-container .preview_card__wrapper button {
   position: absolute;
   top: .2rem;
-  right: .2rem;
+  right: .75rem;
 }
 
 .preview-container .preview_card__wrapper.card_wrapper--active .renderer-card {
   outline: .2rem solid var(--primary);
+}
+
+.preview-container .preview_card__wrapper.card_wrapper--dragging {
+  opacity: .8;
+  cursor: move;
+}
+
+.preview-container .drop_line {
+  width: 0.2rem;
+  height: 6rem;
+  background: #1677ff;
+  position: fixed;
+  top: -9999px;
+  left: -9999px;
 }
