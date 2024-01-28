@@ -39,19 +39,14 @@ function App() {
     selectedIdx: 0,
     user: {
       headshot: "",
-      name: "Ravi Lamkoti",
-      handle: "ravi_lamkoti",
+      name: "",
+      handle: "",
     },
     theme: {
       background: BACKGROUNDS[0],
       colors: THEMES[0],
     },
     slides: [
-      {
-        uid: v4(),
-        title: "GROW YOUR LINKEDIN",
-        text: "Cover slide Subtitle",
-      },
       {
         uid: v4(),
         title: "GROW YOUR LINKEDIN",
