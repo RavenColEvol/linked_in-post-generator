@@ -150,6 +150,7 @@ main {
   display: flex;
   gap: 1rem;
   overflow: auto;
+  padding: 1rem;
 }
 
 .preview-container .renderer-card {
@@ -171,12 +172,16 @@ main {
   flex-shrink: 0;
 }
 
-.preview-container .delete_wrapper {
+.preview-container .preview_card__wrapper {
   position: relative;
 }
 
-.preview-container .delete_wrapper button {
+.preview-container .preview_card__wrapper button {
   position: absolute;
   top: .2rem;
   right: .2rem;
+}
+
+.preview-container .preview_card__wrapper.card_wrapper--active .renderer-card {
+  outline: .2rem solid var(--primary);
 }

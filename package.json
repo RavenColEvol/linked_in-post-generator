@@ -13,6 +13,7 @@
     "@ant-design/icons": "^5.2.6",
     "@types/uuid": "^9.0.8",
     "antd": "^5.13.2",
+    "clsx": "^2.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
