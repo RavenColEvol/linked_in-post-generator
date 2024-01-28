@@ -39,8 +39,8 @@ function App() {
     selectedIdx: 0,
     user: {
       headshot: "",
-      name: "",
-      handle: "",
+      name: "Ravi Lamkoti",
+      handle: "ravi_lamkoti",
     },
     theme: {
       background: BACKGROUNDS[0],

@@ -9,10 +9,12 @@ const backgrounds = {
   blobs: Blobs,
 };
 
-export const getBg = (background: Backgrounds, color: IColor) => {
+export const getBgSVG = (background: Backgrounds, color: IColor) => {
   const Component = backgrounds[background];
-  const uri = encodeURIComponent(
-    ReactDOMServer.renderToStaticMarkup(<Component {...color} />)
-  );
-  return `url("data:image/svg+xml, ${uri}")`;
+  return ReactDOMServer.renderToStaticMarkup(<Component {...color} />)
+}
+
+export const getBg = (background: Backgrounds, color: IColor) => {
+  const uri = encodeURIComponent(getBgSVG(background, color));
+  return `url("data:image/svg+xml,${uri}")`;
 };
