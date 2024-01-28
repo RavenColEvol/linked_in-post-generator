@@ -2,7 +2,7 @@ import { v4 } from "uuid";
 import { useFormState } from "../../hooks/stateContext";
 import { CardRenderer } from "../Renderer";
 import { DeleteOutlined } from "@ant-design/icons";
-import { Button, Form } from "antd";
+import { Button } from "antd";
 import clsx from "clsx";
 
 function Preview() {
@@ -16,10 +16,10 @@ function Preview() {
       return console.log("can't delete it");
     }
     setFormState((form) => {
-      return {
-        ...form,
-        slides: form.slides.filter((slide) => slide.uid !== uid),
-      };
+      const newState = {...form};
+      newState.slides = form.slides.filter((slide) => slide.uid !== uid);
+      newState.selectedIdx = Math.min(newState.selectedIdx, newState.slides.length - 1);
+      return newState;
     });
   };
 
