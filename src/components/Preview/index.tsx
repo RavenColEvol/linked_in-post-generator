@@ -2,18 +2,23 @@ import { v4 } from "uuid";
 import { useFormState } from "../../hooks/stateContext";
 import { CardRenderer } from "../Renderer";
 import { DeleteOutlined } from "@ant-design/icons";
-import { Button } from "antd";
+import { Button, notification } from "antd";
 import clsx from "clsx";
 
 function Preview() {
   const [form, setFormState] = useFormState()!;
+  const [api, contextHolder] = notification.useNotification();
   
   const handleDelete = (event: React.MouseEvent<HTMLElement>, uid: string) => {
     event.stopPropagation();
     event.preventDefault();
 
     if (form.slides.length === 1) {
-      return console.log("can't delete it");
+      return api.warning({
+        message: 'Unable to Delete',
+        description: `Current slide can't be deleted as it's last slide.`,
+        placement: 'bottom',
+      });
     }
     setFormState((form) => {
       const newState = {...form};
@@ -34,6 +39,7 @@ function Preview() {
 
   return (
     <div className="preview-container" style={{ fontSize: "4px" }}>
+      {contextHolder}
       {form.slides.map((slide, idx) => (
         <CardWrapper
           onClick={() => changePreview(idx)}

@@ -124,26 +124,26 @@ main {
 .user {
   font-weight: bold;
   display: flex;
-  gap: .5rem;
+  gap: .5em;
 }
 
 .user .headshot {
-  width: 3rem;
-  height: 3rem;
-  background-size: cover;
+  width: 3em;
+  height: 3em;
+  object-fit: cover;
   border-radius: 50%;
 }
 
 .user .name {
   display: block;
   color: var(--primary);
-  letter-spacing: .08rem;
+  letter-spacing: .08em;
 }
 
 .user .handle {
   display: block;
   color: var(--secondary);
-  letter-spacing: .04rem;
+  letter-spacing: .04em;
 }
 
 .preview-container {
