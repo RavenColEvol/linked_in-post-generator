@@ -4,10 +4,12 @@ import {
   EditOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
-import { Card, Tabs } from "antd";
+import { Card, Tabs, message } from "antd";
 import Renderer from "../Renderer";
 import { ContentForm, SettingsForm, ThemeForm } from "./Forms";
 import { useState } from "react";
+import { download } from "./download";
+import { useFormState } from "../../hooks/stateContext";
 
 const tabs = [
   {
@@ -49,18 +51,21 @@ const tabs = [
 ];
 
 function Editor() {
+  const [form] = useFormState()!;
   const [activeKey, setActiveKey] = useState(tabs[0].uid);
+  const [api, contextHolder] = message.useMessage();
 
-  const handleTabClick = (key: string) => {
+  const handleTabClick = async (key: string) => {
     if (key !== 'download') {
       return setActiveKey(key);
     }
 
-    console.log('download');
+    await download(api, form);
   }
 
   return (
     <section className="editor">
+      {contextHolder}
       <Card className="canvas">
         <Renderer />
       </Card>

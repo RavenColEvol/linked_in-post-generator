@@ -57,18 +57,20 @@ main {
   padding: 2em;
   display: flex;
   flex-direction: column;
-  font-family: 'Poppins';
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
+  font-feature-settings: 'kern';
 }
 
 .renderer-card .main h1 {
   color: var(--primary, #000);
   font-size: 2.4em;
-  line-height: 1.2;
+  line-height: 1.1;
   font-weight: 700;
 }
 
 .renderer-card .main .text {
+  font-size: 1em;
   color: var(--secondary, #000);
 }
 
