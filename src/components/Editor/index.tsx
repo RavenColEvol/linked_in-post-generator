@@ -7,9 +7,11 @@ import {
 import { Card, Tabs } from "antd";
 import Renderer from "../Renderer";
 import { ContentForm, SettingsForm, ThemeForm } from "./Forms";
+import { useState } from "react";
 
 const tabs = [
   {
+    uid: 'edit',
     Label: () => (
       <>
         <EditOutlined /> Content
@@ -18,6 +20,7 @@ const tabs = [
     Component: () => <ContentForm />,
   },
   {
+    uid: 'setting',
     Label: () => (
       <>
         <SettingOutlined /> Settings
@@ -26,6 +29,7 @@ const tabs = [
     Component: () => <SettingsForm />,
   },
   {
+    uid: 'theme',
     Label: () => (
       <>
         <BgColorsOutlined /> Theme
@@ -34,16 +38,27 @@ const tabs = [
     Component: () => <ThemeForm />,
   },
   {
+    uid: 'download',
     Label: () => (
       <>
         <DownloadOutlined /> Download
       </>
     ),
-    Component: () => <span>Download</span>,
+    Component: () => <></>
   },
 ];
 
 function Editor() {
+  const [activeKey, setActiveKey] = useState(tabs[0].uid);
+
+  const handleTabClick = (key: string) => {
+    if (key !== 'download') {
+      return setActiveKey(key);
+    }
+
+    console.log('download');
+  }
+
   return (
     <section className="editor">
       <Card className="canvas">
@@ -51,11 +66,13 @@ function Editor() {
       </Card>
       <div className="form-container">
         <Tabs
+          activeKey={activeKey}
           type="card"
           className="editor-tabs"
-          items={tabs.map(({ Label, Component }, index) => ({
+          onTabClick={handleTabClick}
+          items={tabs.map(({ Label, Component, uid }) => ({
             label: <Label />,
-            key: String(index),
+            key: uid,
             children: <Component />,
           }))}
         />
