@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Editor from "./components/Editor";
 import Preview from "./components/Preview";
 import { FormStateProvider } from "./hooks/stateContext";
-import { BACKGROUNDS } from "./constants";
+import { BACKGROUNDS, THEMES } from "./constants";
 import { Form } from "antd";
 
 export interface ISlide {
@@ -39,16 +39,12 @@ function App() {
     selectedIdx: 0,
     user: {
       headshot: "",
-      name: "Ravi Lamkoti",
-      handle: "ravilamkoti",
+      name: "",
+      handle: "",
     },
     theme: {
-      background: "dots",
-      colors: {
-        primary: "#EB546F",
-        secondary: "#220257",
-        accent: "#FFFFFF",
-      },
+      background: BACKGROUNDS[0],
+      colors: THEMES[0],
     },
     slides: [
       {
@@ -60,27 +56,7 @@ function App() {
         uid: v4(),
         title: "GROW YOUR LINKEDIN",
         text: "Cover slide Subtitle",
-      },
-      {
-        uid: v4(),
-        title: "GROW YOUR LINKEDIN",
-        text: "Cover slide Subtitle",
-      },
-      {
-        uid: v4(),
-        title: "GROW YOUR LINKEDIN",
-        text: "Cover slide Subtitle",
-      },
-      {
-        uid: v4(),
-        title: "GROW YOUR LINKEDIN",
-        text: "Cover slide Subtitle",
-      },
-      {
-        uid: v4(),
-        title: "GROW YOUR LINKEDIN",
-        text: "Cover slide Subtitle",
-      },
+      }
     ],
   });
   const [form] = Form.useForm();

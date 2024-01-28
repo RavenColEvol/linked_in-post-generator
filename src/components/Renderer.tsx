@@ -1,4 +1,3 @@
-import { AllHTMLAttributes } from "react";
 import { ISlide, State } from "../App";
 import { getBg } from "./backgrounds";
 import { useFormState } from "../hooks/stateContext";

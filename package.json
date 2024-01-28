@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
+    "@react-pdf/renderer": "^3.3.4",
     "@types/uuid": "^9.0.8",
     "antd": "^5.13.2",
     "clsx": "^2.1.0",
