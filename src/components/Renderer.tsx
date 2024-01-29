@@ -91,6 +91,10 @@ Font.registerEmojiSource({
   url: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/',
 });
 
+Font.registerHyphenationCallback(word => (
+  [word]
+));
+
 export function ReactPDFCardRenderer(props: CardRendererProps) {
   const { slide, user, theme } = props;
   const { title, text } = slide || {};
@@ -115,7 +119,7 @@ export function ReactPDFCardRenderer(props: CardRendererProps) {
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
-      padding: "10%",
+      padding: "8%",
       fontWeight: "semibold",
       fontFamily: "Poppins",
     },
