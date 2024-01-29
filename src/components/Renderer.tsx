@@ -8,6 +8,8 @@ import {
   StyleSheet,
   Image,
   Font,
+  PDFViewer,
+  Document
 } from "@react-pdf/renderer";
 import { blobToPng, svgToPng } from "./utils";
 
@@ -21,6 +23,15 @@ function Renderer() {
         user={user}
         theme={theme}
       />
+      {/* <PDFViewer>
+        <Document>
+          <ReactPDFCardRenderer
+            slide={slides[selectedIdx]}
+            user={user}
+            theme={theme}
+          />
+        </Document>
+      </PDFViewer> */}
     </div>
   );
 }
@@ -75,6 +86,11 @@ Font.register({
   fontWeight: "bold",
 });
 
+Font.registerEmojiSource({
+  format: 'png',
+  url: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/',
+});
+
 export function ReactPDFCardRenderer(props: CardRendererProps) {
   const { slide, user, theme } = props;
   const { title, text } = slide || {};
@@ -99,7 +115,7 @@ export function ReactPDFCardRenderer(props: CardRendererProps) {
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
-      padding: "8%",
+      padding: "10%",
       fontWeight: "semibold",
       fontFamily: "Poppins",
     },
@@ -115,14 +131,15 @@ export function ReactPDFCardRenderer(props: CardRendererProps) {
       justifyContent: "center",
     },
     title: {
-      fontSize: "10vw",
-      lineHeight: "1.1",
-      marginBottom: "15pt",
+      fontSize: "40pt",
+      lineHeight: "1",
+      marginBottom: "20pt",
       fontWeight: "bold",
       color: primary,
     },
     content: {
       color: secondary,
+      fontSize: '16pt'
     },
     user_container: {
       display: "flex",
