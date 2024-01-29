@@ -5,9 +5,13 @@ import { CardRenderer } from "../Renderer";
 import { DeleteOutlined } from "@ant-design/icons";
 import { Button, notification } from "antd";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
+import { TouchBackend } from 'react-dnd-touch-backend';
 import clsx from "clsx";
 import { useRef } from "react";
+
+const dndOptions = {
+  enableMouseEvents: true
+};
 
 function Preview() {
   const dropLineRef = useRef<null | HTMLDivElement>(null);
@@ -46,7 +50,7 @@ function Preview() {
   };
 
   return (
-    <DndProvider backend={HTML5Backend}>
+    <DndProvider backend={TouchBackend} options={dndOptions}>
       <div className="preview-container">
         {contextHolder}
         <div className="drop_line" ref={dropLineRef}></div>

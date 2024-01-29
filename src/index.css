@@ -219,3 +219,27 @@ main {
   top: -9999px;
   left: -9999px;
 }
+
+@media (max-width: 40rem) {
+  body {
+    display: block;
+    height: auto;
+  }
+  main {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .color-bar__container {
+    gap: 1.2rem;
+  }
+
+  .color-bar__label {
+    width: 3rem;
+    height: 1.25rem;
+  }
+
+  .preview-container {
+    padding: 1rem 0;
+  }
+}
