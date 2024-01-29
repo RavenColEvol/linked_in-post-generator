@@ -144,7 +144,7 @@ function ThemeForm() {
   const [form,setFormState] = useFormState()!;
   const [themes] = useState(THEMES);
   const [backgroundOptions] = useState(() => BACKGROUNDS.map(background => ({
-    name: background,
+    label: background.charAt(0).toUpperCase() + background.slice(1),
     value: background
   })));
 
@@ -157,10 +157,15 @@ function ThemeForm() {
       }
     }));
   }
+
   return (
     <>
       <Form.Item label="Background" name="background">
-        <Select defaultValue={form.theme.background} onChange={handleChange} options={backgroundOptions} />
+        <Select 
+          defaultValue={form.theme.background} 
+          onChange={handleChange} 
+          options={backgroundOptions} 
+        />
       </Form.Item>
       <div className="color-bar__container">
         {themes.map((theme, idx) => (
