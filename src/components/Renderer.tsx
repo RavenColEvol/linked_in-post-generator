@@ -8,8 +8,8 @@ import {
   StyleSheet,
   Image,
   Font,
-  PDFViewer,
-  Document
+  // PDFViewer,
+  // Document
 } from "@react-pdf/renderer";
 import { blobToPng, svgToPng } from "./utils";
 

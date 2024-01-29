@@ -8,7 +8,7 @@ import { UploadChangeParam, UploadProps } from "antd/es/upload";
 
 function ContentForm() {
   const [form, setFormState] = useFormState()!;
-  const { slides, selectedIdx } = form;
+  const { selectedIdx } = form;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const targetName = e.target.id;

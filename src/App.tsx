@@ -18,7 +18,7 @@ export interface IColor {
   accent: string;
 }
 
-export type Backgrounds = (typeof BACKGROUNDS)[number];
+export type Backgrounds = typeof BACKGROUNDS[number];
 
 export interface State {
   selectedIdx: number;

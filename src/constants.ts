@@ -1,4 +1,4 @@
-export const BACKGROUNDS = ['dots','circle','triangle','blobs'];
+export const BACKGROUNDS = ['dots','circle','triangle','blobs'] as const;
 
 export const THEMES = [
   {
