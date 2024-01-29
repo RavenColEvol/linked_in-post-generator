@@ -76,13 +76,13 @@ export function CardRenderer(props: CardRendererProps) {
 
 Font.register({
   family: "Poppins",
-  src: "/fonts/Poppins-SemiBold.ttf",
+  src: "./fonts/Poppins-SemiBold.ttf",
   fontWeight: "semibold",
 });
 
 Font.register({
   family: "Poppins",
-  src: "/fonts/Poppins-Bold.ttf",
+  src: "./fonts/Poppins-Bold.ttf",
   fontWeight: "bold",
 });
 
