@@ -1,7 +1,7 @@
 import { UploadOutlined } from "@ant-design/icons";
 import { Button, Form, GetProp, Input, Select, Upload } from "antd";
 import { useState } from "react";
-import { IColor } from "../../App";
+import { Backgrounds, IColor } from "../../App";
 import { useFormState } from "../../hooks/stateContext";
 import { BACKGROUNDS, THEMES } from "../../constants";
 import { UploadChangeParam, UploadProps } from "antd/es/upload";
@@ -148,7 +148,7 @@ function ThemeForm() {
     value: background
   })));
 
-  const handleChange = (background: string) => {
+  const handleChange = (background: Backgrounds) => {
     setFormState(form => ({
       ...form,
       theme: {
