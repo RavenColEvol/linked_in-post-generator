@@ -60,6 +60,7 @@ main {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-feature-settings: 'kern';
+  word-break: break-all;
 }
 
 .renderer-card .main h1 {
