@@ -56,15 +56,18 @@ function Preview() {
   const handleDrop = (result: any) => {
     if (!result.destination) return;
     setFormState(form => {
-      const newSlides = reorder(
+      const newForm = {
+        ...form
+      };
+      const currentlySelectedUID = form.slides[form.selectedIdx].uid;
+      newForm.slides = reorder(
         form.slides, 
         result.source.index,
         result.destination.index
       );
-      return {
-        ...form,
-        slides: newSlides
-      };
+      const afterReorderIdx = newForm.slides.findIndex(slide => slide.uid === currentlySelectedUID);
+      newForm.selectedIdx = afterReorderIdx;
+      return newForm;
     });
   }
 
