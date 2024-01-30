@@ -18,7 +18,8 @@ const svgUrlToPng = async (svgUrl: string) => {
   let res: any, rej: any;
   const promise = new Promise((resolve, reject) => [res, rej] = [resolve, reject]);
   const svgImage = document.createElement("img");
-  document.body.appendChild(svgImage);
+  const hiddenRenderer = document.getElementById('hidden-renderer')!;
+  hiddenRenderer.appendChild(svgImage);
   svgImage.onload = function () {
     const canvas = document.createElement("canvas");
     canvas.width = svgImage.clientWidth;
@@ -27,7 +28,7 @@ const svgUrlToPng = async (svgUrl: string) => {
     canvasCtx.drawImage(svgImage, 0, 0);
     const imgData = canvas.toDataURL("image/png");
     res(imgData);
-    document.body.removeChild(svgImage);
+    hiddenRenderer.removeChild(svgImage);
   };
   svgImage.onerror = function() {
     rej('Unable to convert image')

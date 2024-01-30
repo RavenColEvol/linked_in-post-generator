@@ -73,6 +73,7 @@ function App() {
           <Editor />
           <Preview />
         </main>
+        <div id="hidden-renderer"></div>
       </Form>
     </FormStateProvider>
   );

@@ -26,6 +26,10 @@ main {
   gap: 1rem;
 }
 
+#hidden-renderer {
+  opacity: 0;
+  pointer-events: none;
+}
 .main {
   flex: 1;
   display: flex;
