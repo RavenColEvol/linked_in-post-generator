@@ -93,10 +93,10 @@ function SettingsForm() {
         </Upload>
       </Form.Item>
       <Form.Item label="Name" name="name">
-        <Input onChange={handleChange} defaultValue={name} placeholder="Your Name" />
+        <Input allowClear onChange={handleChange} defaultValue={name} placeholder="Your Name" />
       </Form.Item>
       <Form.Item label="Handle" name="handle">
-        <Input onChange={handleChange} addonBefore='@' defaultValue={handle} placeholder="Your LinkedIn Handle" />
+        <Input allowClear onChange={handleChange} addonBefore='@' defaultValue={handle} placeholder="Your LinkedIn Handle" />
       </Form.Item>
     </>
   );
