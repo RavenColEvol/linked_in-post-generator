@@ -2,7 +2,7 @@ import {
   BgColorsOutlined,
   DownloadOutlined,
   EditOutlined,
-  SettingOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import { Card, Tabs, message } from "antd";
 import Renderer from "../Renderer";
@@ -25,7 +25,7 @@ const tabs = [
     uid: 'setting',
     Label: () => (
       <>
-        <SettingOutlined /> Settings
+        <UserOutlined /> User
       </>
     ),
     Component: () => <SettingsForm />,
