@@ -14,6 +14,8 @@ const getSvgUrl = (svg: string) => {
   return URL.createObjectURL(new Blob([svg], { type: "image/svg+xml" }));
 }
 
+const scale = window.devicePixelRatio;
+
 const svgUrlToPng = async (svgUrl: string) => {
   let res: any, rej: any;
   const promise = new Promise((resolve, reject) => [res, rej] = [resolve, reject]);
@@ -22,10 +24,11 @@ const svgUrlToPng = async (svgUrl: string) => {
   hiddenRenderer.appendChild(svgImage);
   svgImage.onload = function () {
     const canvas = document.createElement("canvas");
-    canvas.width = svgImage.clientWidth;
-    canvas.height = svgImage.clientHeight;
+    canvas.width = Math.floor(svgImage.clientWidth * scale);
+    canvas.height = Math.floor(svgImage.clientHeight * scale);
     const canvasCtx = canvas.getContext("2d")!;
-    canvasCtx.drawImage(svgImage, 0, 0);
+    canvasCtx.drawImage(svgImage, 0, 0, canvas.width, canvas.height);
+    canvasCtx.scale(scale, scale);
     const imgData = canvas.toDataURL("image/png");
     res(imgData);
     hiddenRenderer.removeChild(svgImage);
