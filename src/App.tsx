@@ -1,5 +1,6 @@
 import { v4 } from "uuid";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useLocalStorage } from '@uidotdev/usehooks';
 import Editor from "./components/Editor";
 import Preview from "./components/Preview";
 import { FormStateProvider } from "./hooks/stateContext";
@@ -35,7 +36,7 @@ export interface State {
 }
 
 function App() {
-  const [state, setState] = useState<State>({
+  const [state, setState] = useLocalStorage<State>('licg', {
     selectedIdx: 0,
     user: {
       headshot: "",

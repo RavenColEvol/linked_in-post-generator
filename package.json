@@ -13,14 +13,17 @@
     "@ant-design/icons": "^5.2.6",
     "@react-pdf/renderer": "^3.3.4",
     "@types/uuid": "^9.0.8",
+    "@uidotdev/usehooks": "^2.4.1",
     "antd": "^5.13.2",
     "clsx": "^2.1.0",
+    "downloadjs": "^1.4.7",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^18.2.0",
     "react-merge-refs": "^2.1.1"
   },
   "devDependencies": {
+    "@types/downloadjs": "^1.4.6",
     "@types/react": "^18.2.43",
     "@types/react-beautiful-dnd": "^13.1.8",
     "@types/react-dom": "^18.2.17",
